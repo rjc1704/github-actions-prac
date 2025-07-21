@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest # 깃헙액션 워크플로우가 실행되는 OS 환경. EC2 OS와 같은 필요 없음
     steps:
       - name: 깃헙 레포지토리 불러오기
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
 
       - name: Node 설치
-        uses: actions/setup-node@4
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
 
