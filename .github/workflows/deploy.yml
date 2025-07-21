@@ -9,6 +9,24 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest # 깃헙액션 워크플로우가 실행되는 OS 환경. EC2 OS와 같은 필요 없음
     steps:
+      - name: 깃헙 레포지토리 불러오기
+        uses: actions/checkout@4
+
+      - name: Node 설치
+        uses: actions/setup-node@4
+        with:
+          node-version: "20"
+
+      - name: 의존성 설치
+        run: npm ci
+
+      - name: .env 파일 생성
+        run: |
+          echo "${{ secrets.ENV }}" > .env
+
+      - name: 테스트 코드 실행
+        run: npm run test
+
       - name: SSH로 EC2에 접속하기
         uses: appleboy/ssh-action@v1.0.3
         env:
