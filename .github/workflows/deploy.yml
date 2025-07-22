@@ -52,6 +52,7 @@ jobs:
           script: |
             cd /home/ec2-user/github-actions-prac
             tar -xvf project.tar.gz
+            rm -rf project.tar.gz
             npm ci
             pm2 kill
             pm2 start dist/app.js --name "backend-server"
