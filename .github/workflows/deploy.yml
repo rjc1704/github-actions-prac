@@ -34,7 +34,7 @@ jobs:
         run: tar -czvf project.tar.gz dist .env package.json package-lock.json
 
       - name: scp 사용하여 EC2에 빌드파일 전송하기
-        uses: applyboy/scp-action@v1
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
